@@ -1,0 +1,131 @@
+<div>
+  <div>
+    <h1>
+      Question #<%= @the_question.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/questions">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_question/<%= @the_question.id %>">
+          Delete question
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        User
+      </dt>
+      <dd>
+        <%= @the_question.user_id %>
+      </dd>
+
+      <dt>
+        Question
+      </dt>
+      <dd>
+        <%= @the_question.question %>
+      </dd>
+
+      <dt>
+        Patient age
+      </dt>
+      <dd>
+        <%= @the_question.patient_age %>
+      </dd>
+
+      <dt>
+        Medical history
+      </dt>
+      <dd>
+        <%= @the_question.medical_history %>
+      </dd>
+
+      <dt>
+        Epilepsy type
+      </dt>
+      <dd>
+        <%= @the_question.epilepsy_type_id %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_question.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_question.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit question
+    </h2>
+
+    <form action="/modify_question/<%= @the_question.id %>"  method="post" >
+      <div>
+        <label for="user_id_box">
+          User
+        </label>
+
+        <input type="text" id="user_id_box" name="query_user_id" value="<%= @the_question.user_id %>">
+      </div>
+
+      <div>
+        <label for="question_box">
+          Question
+        </label>
+
+        <textarea id="question_box" name="query_question"><%= @the_question.question %></textarea>
+      </div>
+
+      <div>
+        <label for="patient_age_box">
+          Patient age
+        </label>
+
+        <input type="text" id="patient_age_box" name="query_patient_age" value="<%= @the_question.patient_age %>">
+      </div>
+
+      <div>
+        <label for="medical_history_box">
+          Medical history
+        </label>
+
+        <textarea id="medical_history_box" name="query_medical_history"><%= @the_question.medical_history %></textarea>
+      </div>
+
+      <div>
+        <label for="epilepsy_type_id_box">
+          Epilepsy type
+        </label>
+
+        <input type="text" id="epilepsy_type_id_box" name="query_epilepsy_type_id" value="<%= @the_question.epilepsy_type_id %>">
+      </div>
+
+      <button>
+        Update question
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

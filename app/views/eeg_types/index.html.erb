@@ -1,0 +1,102 @@
+<div>
+  <div>
+    <h1>
+      List of all eeg types
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <h2>
+      Add a new eeg type
+    </h2>
+
+    <form action="/insert_eeg_type" method="post">
+      <div>
+        <label for="name_box">
+          Name
+        </label>
+
+        <input type="text" id="name_box" name="query_name">
+      </div>
+
+      <div>
+        <label for="wave_frequency_box">
+          Wave frequency
+        </label>
+
+        <input type="text" id="wave_frequency_box" name="query_wave_frequency">
+      </div>
+
+      <button>
+        Create eeg type
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div>
+  <div>
+    <table border="1">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Name
+        </th>
+
+        <th>
+          Wave frequency
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @list_of_eeg_types.each do |an_eeg_type| %>
+      <tr>
+        <td>
+          <%= an_eeg_type.id %>
+        </td>
+
+        <td>
+          <%= an_eeg_type.name %>
+        </td>
+
+        <td>
+          <%= an_eeg_type.wave_frequency %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(an_eeg_type.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(an_eeg_type.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/eeg_types/<%= an_eeg_type.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>

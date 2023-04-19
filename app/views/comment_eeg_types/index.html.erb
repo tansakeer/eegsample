@@ -1,0 +1,118 @@
+<div>
+  <div>
+    <h1>
+      List of all comment eeg types
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <h2>
+      Add a new comment eeg type
+    </h2>
+
+    <form action="/insert_comment_eeg_type" method="post">
+      <div>
+        <label for="comment_id_box">
+          Comment
+        </label>
+
+        <input type="text" id="comment_id_box" name="query_comment_id">
+      </div>
+
+      <div>
+        <label for="eeg_type_id_box">
+          Eeg type
+        </label>
+
+        <input type="text" id="eeg_type_id_box" name="query_eeg_type_id">
+      </div>
+
+      <div>
+        <label for="epilepsy_type_id_box">
+          Epilepsy type
+        </label>
+
+        <input type="text" id="epilepsy_type_id_box" name="query_epilepsy_type_id">
+      </div>
+
+      <button>
+        Create comment eeg type
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div>
+  <div>
+    <table border="1">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Comment
+        </th>
+
+        <th>
+          Eeg type
+        </th>
+
+        <th>
+          Epilepsy type
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @list_of_comment_eeg_types.each do |a_comment_eeg_type| %>
+      <tr>
+        <td>
+          <%= a_comment_eeg_type.id %>
+        </td>
+
+        <td>
+          <%= a_comment_eeg_type.comment_id %>
+        </td>
+
+        <td>
+          <%= a_comment_eeg_type.eeg_type_id %>
+        </td>
+
+        <td>
+          <%= a_comment_eeg_type.epilepsy_type_id %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(a_comment_eeg_type.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(a_comment_eeg_type.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/comment_eeg_types/<%= a_comment_eeg_type.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>

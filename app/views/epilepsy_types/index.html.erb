@@ -1,0 +1,118 @@
+<div>
+  <div>
+    <h1>
+      List of all epilepsy types
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <h2>
+      Add a new epilepsy type
+    </h2>
+
+    <form action="/insert_epilepsy_type" method="post">
+      <div>
+        <label for="seizure_name_box">
+          Seizure name
+        </label>
+
+        <input type="text" id="seizure_name_box" name="query_seizure_name">
+      </div>
+
+      <div>
+        <label for="questions_count_box">
+          Questions count
+        </label>
+
+        <input type="text" id="questions_count_box" name="query_questions_count">
+      </div>
+
+      <div>
+        <label for="comment_tags_count_box">
+          Comment tags count
+        </label>
+
+        <input type="text" id="comment_tags_count_box" name="query_comment_tags_count">
+      </div>
+
+      <button>
+        Create epilepsy type
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div>
+  <div>
+    <table border="1">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Seizure name
+        </th>
+
+        <th>
+          Questions count
+        </th>
+
+        <th>
+          Comment tags count
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @list_of_epilepsy_types.each do |an_epilepsy_type| %>
+      <tr>
+        <td>
+          <%= an_epilepsy_type.id %>
+        </td>
+
+        <td>
+          <%= an_epilepsy_type.seizure_name %>
+        </td>
+
+        <td>
+          <%= an_epilepsy_type.questions_count %>
+        </td>
+
+        <td>
+          <%= an_epilepsy_type.comment_tags_count %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(an_epilepsy_type.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(an_epilepsy_type.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/epilepsy_types/<%= an_epilepsy_type.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>

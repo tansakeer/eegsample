@@ -1,0 +1,101 @@
+<div>
+  <div>
+    <h1>
+      Epilepsy type #<%= @the_epilepsy_type.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/epilepsy_types">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_epilepsy_type/<%= @the_epilepsy_type.id %>">
+          Delete epilepsy type
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Seizure name
+      </dt>
+      <dd>
+        <%= @the_epilepsy_type.seizure_name %>
+      </dd>
+
+      <dt>
+        Questions count
+      </dt>
+      <dd>
+        <%= @the_epilepsy_type.questions_count %>
+      </dd>
+
+      <dt>
+        Comment tags count
+      </dt>
+      <dd>
+        <%= @the_epilepsy_type.comment_tags_count %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_epilepsy_type.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_epilepsy_type.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit epilepsy type
+    </h2>
+
+    <form action="/modify_epilepsy_type/<%= @the_epilepsy_type.id %>"  method="post" >
+      <div>
+        <label for="seizure_name_box">
+          Seizure name
+        </label>
+
+        <input type="text" id="seizure_name_box" name="query_seizure_name" value="<%= @the_epilepsy_type.seizure_name %>">
+      </div>
+
+      <div>
+        <label for="questions_count_box">
+          Questions count
+        </label>
+
+        <input type="text" id="questions_count_box" name="query_questions_count" value="<%= @the_epilepsy_type.questions_count %>">
+      </div>
+
+      <div>
+        <label for="comment_tags_count_box">
+          Comment tags count
+        </label>
+
+        <input type="text" id="comment_tags_count_box" name="query_comment_tags_count" value="<%= @the_epilepsy_type.comment_tags_count %>">
+      </div>
+
+      <button>
+        Update epilepsy type
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

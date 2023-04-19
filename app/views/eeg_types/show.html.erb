@@ -1,0 +1,86 @@
+<div>
+  <div>
+    <h1>
+      Eeg type #<%= @the_eeg_type.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/eeg_types">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_eeg_type/<%= @the_eeg_type.id %>">
+          Delete eeg type
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Name
+      </dt>
+      <dd>
+        <%= @the_eeg_type.name %>
+      </dd>
+
+      <dt>
+        Wave frequency
+      </dt>
+      <dd>
+        <%= @the_eeg_type.wave_frequency %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_eeg_type.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_eeg_type.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit eeg type
+    </h2>
+
+    <form action="/modify_eeg_type/<%= @the_eeg_type.id %>"  method="post" >
+      <div>
+        <label for="name_box">
+          Name
+        </label>
+
+        <input type="text" id="name_box" name="query_name" value="<%= @the_eeg_type.name %>">
+      </div>
+
+      <div>
+        <label for="wave_frequency_box">
+          Wave frequency
+        </label>
+
+        <input type="text" id="wave_frequency_box" name="query_wave_frequency" value="<%= @the_eeg_type.wave_frequency %>">
+      </div>
+
+      <button>
+        Update eeg type
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

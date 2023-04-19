@@ -1,0 +1,101 @@
+<div>
+  <div>
+    <h1>
+      Comment eeg type #<%= @the_comment_eeg_type.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/comment_eeg_types">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_comment_eeg_type/<%= @the_comment_eeg_type.id %>">
+          Delete comment eeg type
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Comment
+      </dt>
+      <dd>
+        <%= @the_comment_eeg_type.comment_id %>
+      </dd>
+
+      <dt>
+        Eeg type
+      </dt>
+      <dd>
+        <%= @the_comment_eeg_type.eeg_type_id %>
+      </dd>
+
+      <dt>
+        Epilepsy type
+      </dt>
+      <dd>
+        <%= @the_comment_eeg_type.epilepsy_type_id %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_comment_eeg_type.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_comment_eeg_type.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit comment eeg type
+    </h2>
+
+    <form action="/modify_comment_eeg_type/<%= @the_comment_eeg_type.id %>"  method="post" >
+      <div>
+        <label for="comment_id_box">
+          Comment
+        </label>
+
+        <input type="text" id="comment_id_box" name="query_comment_id" value="<%= @the_comment_eeg_type.comment_id %>">
+      </div>
+
+      <div>
+        <label for="eeg_type_id_box">
+          Eeg type
+        </label>
+
+        <input type="text" id="eeg_type_id_box" name="query_eeg_type_id" value="<%= @the_comment_eeg_type.eeg_type_id %>">
+      </div>
+
+      <div>
+        <label for="epilepsy_type_id_box">
+          Epilepsy type
+        </label>
+
+        <input type="text" id="epilepsy_type_id_box" name="query_epilepsy_type_id" value="<%= @the_comment_eeg_type.epilepsy_type_id %>">
+      </div>
+
+      <button>
+        Update comment eeg type
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
