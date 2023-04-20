@@ -1,7 +1,7 @@
 <div>
   <div>
     <h1>
-      List of all photos
+      List of all questions
     </h1>
   </div>
 </div>
@@ -10,37 +10,71 @@
 
 <div>
   <div>
-    <h2>
-      Add a new photo
-    </h2>
-
     <form action="/insert_photo" method="post" class="form-horizontal" enctype="multipart/form-data" >
+     
+      <div>
+        <label for="patient_age_box">
+          Patient age
+        </label>
+      <input type="text" id="patient_age_box" name="query_patient_age">
+      </div>
+
+        <div>
+        <label for="question_box">
+          Question
+        </label>
+
+        <textarea id="question_box" name="query_question" rows="3"></textarea>
+      </div>
+      
+      <div>
+        <label for="medical_history_box">
+          Medical history
+        </label>
+
+        <textarea id="medical_history_box" name="query_medical_history" rows="3"></textarea>
+      </div>
+
+      <div>
+        <label for="epilepsy_type_id_box">
+          Epilepsy type
+        </label>
+
+        <input type="text" id="epilepsy_type_id_box" name="query_epilepsy_type_id">
+      </div>
+
+      <%#button>
+        Create question
+      </button#%>
+
+
+    <%# form action="/insert_photo" method="post" class="form-horizontal" enctype="multipart/form-data" #%>
       <div>
         <label for="image">
           Image
         </label>
 
-        <input type="file" id="image" name="query_image" class="form-control>
+        <input type="file" id="image" name="query_image" class="form-control">
       </div>
 
-      <div>
+      <%#div>
         <label for="video_box">
           Video
         </label>
 
-        <input type="text" id="video_box" name="query_video">
-      </div>
+        <input type="file" id="video_box" name="query_video">
+      </div #%>
 
-      <div>
+      <%#div>
         <label for="question_id_box">
-          Question
-        </label>
+          Question Description
+        </label >
 
         <input type="text" id="question_id_box" name="query_question_id">
-      </div>
+      </div #%>
 
       <button>
-        Create photo
+        Upload
       </button>
     </form>
   </div>
@@ -51,68 +85,58 @@
   <div>
     <table border="1">
       <tr>
-        <th>
-          ID
-        </th>
-
-        <th>
+       <th>
           Image
         </th>
 
-        <th>
-          Video
+       <th>
+        Patient Age
         </th>
 
         <th>
           Question
         </th>
-
+      
         <th>
-          Created at
+        Medical History 
         </th>
-
-        <th>
-          Updated at
-        </th>
-
-        <th>
-        </th>
+         
+         <th>
+          Epilepsy Type
+         </th>
       </tr>
 
-      <% @list_of_photos.each do |a_photo| %>
-      <tr>
-        <td>
-          <%= a_photo.id %>
-        </td>
-
-        <td>
-          <%= a_photo.image %>
-        </td>
-
-        <td>
-          <%= a_photo.video %>
-        </td>
-
-        <td>
-          <%= a_photo.question_id %>
-        </td>
-
-        <td>
-          <%= time_ago_in_words(a_photo.created_at) %> ago
-        </td>
-        <td>
-          <%= time_ago_in_words(a_photo.updated_at) %> ago
-        </td>
-
-        <td>
-          <a href="/photos/<%= a_photo.id %>">
-            Show details
-          </a>
-        </td>
-      </tr>
-      <% end %>
     </table>
   </div>
 </div>
 
 <hr>
+
+<% @list_of_photos.each do |a_photo| %>
+<tr>
+
+<td>
+<img src="<%= a_photo.image %>"
+class="img-responsive" width="500" height="400">
+</td>
+
+<td>
+<%= a_photo.id %>
+</td>
+
+<td>
+<%#= a_photo.associated_question.patient_age%>
+</td>
+
+<td>
+Posted Time <%= time_ago_in_words(a_photo.created_at) %> ago
+</td>
+
+<td>
+<a href="/photos/<%= a_photo.id %>">
+Show details
+</a>
+</td>
+
+</tr>
+<% end %>

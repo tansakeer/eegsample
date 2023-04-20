@@ -20,8 +20,6 @@
     <a href="/user_sign_in">Sign in</a>
       |
       <a href="/user_sign_up">Sign up</a>        
-
-
     </div>
 
     <% else %>
@@ -32,13 +30,12 @@
       <a href="/edit_user_profile">Edit profile</a>
       |
       <a href="/user_sign_out">Sign out</a>
-
       </div>
-      <% end %>
       </nav>
   <br>
     <%= notice %>
     <%= alert %>
+    <% end %>
 
   <body>
     <%= yield %>

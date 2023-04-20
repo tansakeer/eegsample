@@ -13,6 +13,8 @@ class Photo < ApplicationRecord
   
   belongs_to :associated_question, :class_name => "Question", :foreign_key => "question_id"
 
+  has_many :users
+
   mount_uploader :image, ImageUploader
 
 end

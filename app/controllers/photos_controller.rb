@@ -1,5 +1,11 @@
 class PhotosController < ApplicationController
+
+  #def homepage
+    #render({ :template => "homepage/index.html.erb" })
+  #end 
+
   def index
+
     matching_photos = Photo.all
 
     @list_of_photos = matching_photos.order({ :created_at => :desc })
@@ -20,8 +26,8 @@ class PhotosController < ApplicationController
   def create
     the_photo = Photo.new
     the_photo.image = params.fetch("query_image")
-    the_photo.video = params.fetch("query_video")
-    the_photo.question_id = params.fetch("query_question_id")
+    #the_photo.question_id = @current_user.question.id
+    #the_photo.video = params.fetch("query_video")
 
     if the_photo.valid?
       the_photo.save

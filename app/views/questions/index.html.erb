@@ -10,140 +10,102 @@
 
 <div>
   <div>
-    <h2>
-      Add a new question
-    </h2>
-
-    <form action="/insert_question" method="post">
-      <div>
-        <label for="user_id_box">
-          User
-        </label>
-
-        <input type="text" id="user_id_box" name="query_user_id">
-      </div>
-
-      <div>
-        <label for="question_box">
-          Question
-        </label>
-
-        <textarea id="question_box" name="query_question" rows="3"></textarea>
-      </div>
-
+    <form action="/zebra" method="post" class="form-horizontal" enctype="multipart/form-data">
+     
       <div>
         <label for="patient_age_box">
           Patient age
         </label>
-
-        <input type="text" id="patient_age_box" name="query_patient_age">
+      <input type="text" id="patient_age_box" name="query_patient_age">
       </div>
 
+        <div>
+        <label for="question_box">
+          Question
+        </label>
+        <textarea id="question_box" name="query_question" rows="3"></textarea>
+      </div>
+      
       <div>
         <label for="medical_history_box">
           Medical history
         </label>
-
         <textarea id="medical_history_box" name="query_medical_history" rows="3"></textarea>
       </div>
 
       <div>
-        <label for="epilepsy_type_id_box">
-          Epilepsy type
+        <label for="image">
+          Image
         </label>
-
-        <input type="text" id="epilepsy_type_id_box" name="query_epilepsy_type_id">
+        <input type="file" id="image" name="query_image" class="form-control">
       </div>
 
       <button>
-        Create question
+        Upload
       </button>
     </form>
   </div>
 </div>
 
 <hr>
+
 <div>
   <div>
     <table border="1">
       <tr>
-        <th>
-          ID
+
+      <th>
+          Image
         </th>
 
-        <th>
-          User
+       <th>
+        Patient Age
         </th>
+
+        
 
         <th>
           Question
         </th>
-
+      
         <th>
-          Patient age
+        Medical History 
         </th>
-
-        <th>
-          Medical history
-        </th>
-
-        <th>
-          Epilepsy type
-        </th>
-
-        <th>
-          Created at
-        </th>
-
-        <th>
-          Updated at
-        </th>
-
-        <th>
-        </th>
+         
       </tr>
 
-      <% @list_of_questions.each do |a_question| %>
-      <tr>
-        <td>
-          <%= a_question.id %>
-        </td>
 
+      <% @questions.each do |a_question| %>
+      <tr>
+  
         <td>
-          <%= a_question.user_id %>
+      <img src="<%= a_question.photos.image %>" class="img-responsive">
+
+        </td>
+        
+        <td>
+          <%= a_question.patient_age %>
         </td>
 
         <td>
           <%= a_question.question %>
         </td>
 
-        <td>
-          <%= a_question.patient_age %>
-        </td>
-
+        
         <td>
           <%= a_question.medical_history %>
         </td>
 
         <td>
-          <%= a_question.epilepsy_type_id %>
-        </td>
-
-        <td>
-          <%= time_ago_in_words(a_question.created_at) %> ago
-        </td>
-        <td>
-          <%= time_ago_in_words(a_question.updated_at) %> ago
-        </td>
-
-        <td>
           <a href="/questions/<%= a_question.id %>">
-            Show details
+          Show details
           </a>
         </td>
+
       </tr>
       <% end %>
     </table>
+    <%= will_paginate @questions %>
   </div>
 </div>
 

@@ -15,7 +15,7 @@ class User < ApplicationRecord
   validates :email, :presence => true
   has_secure_password
 
-has_many  :questions, :dependent => :nullify
+has_many  :question, :dependent => :nullify
 
 has_many  :comments, :dependent => :destroy
 end

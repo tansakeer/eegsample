@@ -3,6 +3,10 @@ Rails.application.routes.draw do
 
 
   # Routes for the Epilepsy type resource:
+  # HOMEPAGE
+
+  get("/", { :controller => "questions", :action => "index" })
+
 
   # CREATE
   post("/insert_epilepsy_type", { :controller => "epilepsy_types", :action => "create" })
@@ -65,7 +69,7 @@ Rails.application.routes.draw do
   post("/insert_photo", { :controller => "photos", :action => "create" })
           
   # READ
-  get("/", { :controller => "photos", :action => "index" })
+  get("/photos", { :controller => "photos", :action => "index" })
   
   get("/photos/:path_id", { :controller => "photos", :action => "show" })
   
@@ -103,7 +107,7 @@ Rails.application.routes.draw do
   post("/insert_question", { :controller => "questions", :action => "create" })
           
   # READ
-  get("/questions", { :controller => "questions", :action => "index" })
+  post("/zebra", { :controller => "questions", :action => "zebra_create" })
   
   get("/questions/:path_id", { :controller => "questions", :action => "show" })
   
