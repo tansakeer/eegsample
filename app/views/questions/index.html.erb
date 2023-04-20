@@ -14,49 +14,7 @@
 
 <center>
 <h3>CrowdSource Board</h3>
-<br> 
-
-<div style="width: 450px; text-align: left;">
-  <form action="/zebra" method="post" class="form-horizontal" enctype="multipart/form-data">
-    <div class="row mb-1">
-    <label for="patient_age_box" class="col-sm-4 col-form-label">Patient age</label>
-    <div class="col-sm-7">
-    <input name="query_patient_age" type="text" class="form-control" id="patient_age_box">
-    </div>
-    </div>
-
-    <div class="row mb-1">
-    <label for="question_box" class="col-sm-4 col-form-label">Question</label>
-    <div class="col-sm-7">
-    <textarea name="query_question" class="form-control" id="question_box" rows="3"></textarea>
-    </div>
-    </div>
-
-    <div class="row mb-1">
-    <label for="medical_history_box" class="col-sm-4 col-form-label">Medical history</label>
-    <div class="col-sm-7">
-    <textarea name="query_medical_history" class="form-control" id="medical_history_box" rows="3"></textarea>
-    </div>
-    </div>
-
-    <div class="row mb-1">
-    <label for="image" class="col-sm-4 col-form-label">Image</label>
-    <div class="col-sm-7">
-    <input type="file" id="image" name="query_image" class="form-control">
-    </div>
-    </div>
-
-    <input type="hidden" id="some" name="query_question_id" input="<%= %>">
-    <br>
-    <center>
-    <button align="right" class="btn btn-secondary">Post question</button>
-    </center>
-  </form>
-</div>
-
 <br>
-
-<hr>
 
 <div class="tdiv">
   <table>
@@ -87,8 +45,6 @@
   <% end %>
 </table>
 <br>
-  <div class="tnotice">
   <%= will_paginate @questions %>
-  </div>
 </div>
 </center>

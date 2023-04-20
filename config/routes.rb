@@ -107,9 +107,7 @@ Rails.application.routes.draw do
   # READ
   post("/zebra", { :controller => "questions", :action => "zebra_create" })
 
-  get("/questions/:user_id/:path_id", { :controller => "questions", :action => "show_user_posts" })
-
-  get("/questions/:path_id", { :controller => "questions", :action => "show" })
+  get("/questions", { :controller => "questions", :action => "show" })
   
   # UPDATE
   

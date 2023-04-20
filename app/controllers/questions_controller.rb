@@ -15,11 +15,11 @@ class QuestionsController < ApplicationController
   end
 
   def show
-    the_id = params.fetch("path_id")
+    the_id = @current_user.id 
 
-    matching_questions = Question.where({ :id => the_id })
+    @matching_questions = Question.where({ :user_id => the_id })
 
-    @the_question = matching_questions.at(0)
+    #@the_question = matching_questions.a
 
     render({ :template => "questions/show.html.erb" })
   end
@@ -89,13 +89,13 @@ end
     render({ :template => "questions/new_post.html.erb" })
  end
 
- 
-  def show_user_posts
-    matching_questions = Question.where({ :user_id => @current_user.id })
 
-    @the_question = matching_questions.at(0)
+  # def show_user_posts
+  #   matching_questions = Question.where({ :user_id => @current_user.id })
 
-    render({ :template => "questions/show.html.erb" })
-  end
+  #   @the_question = matching_questions.at(0)
+
+  #   render({ :template => "questions/show.html.erb" })
+  # end
 
 end
