@@ -20,13 +20,16 @@ class PhotosController < ApplicationController
 
     @the_photo = matching_photos.at(0)
 
+    @photo_related_to_question = matching_photos.where({ :question_id => @the_photo.associated_question.id })
+
+
     render({ :template => "photos/show.html.erb" })
   end
 
   def create
     the_photo = Photo.new
     the_photo.image = params.fetch("query_image")
-    #the_photo.question_id = @current_user.question.id
+    the_photo.question_id = @current_user.question.id
     #the_photo.video = params.fetch("query_video")
 
     if the_photo.valid?

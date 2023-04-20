@@ -5,7 +5,7 @@ class QuestionsController < ApplicationController
     matching_questions = Question.all
 
     @list_of_questions = matching_questions.order({ :created_at => :desc })
-    @questions = @list_of_questions.paginate(page: params[:page], per_page: 5)
+    @questions = @list_of_questions.paginate(page: params[:page], per_page: 10)
 
     render({ :template => "questions/index.html.erb" })
   end
@@ -22,6 +22,7 @@ class QuestionsController < ApplicationController
 
   def zebra_create
 
+     create_count=0
     the_question = Question.new
     the_question.user_id = @current_user.id
     the_question.question = params.fetch("query_question")
@@ -30,19 +31,24 @@ class QuestionsController < ApplicationController
     
     if the_question.valid?
       the_question.save
-  
 
       the_photo = Photo.new
       the_photo.question_id = the_question.id
       the_photo.image= params.fetch("query_image")
+      
+      if the_image.valid?
       the_photo.save
+      count+= 1
+      end
 
-      #if the_image.valid?
-      redirect_to("/", { :notice => "Image was saved successfully" })
+      if count == 1
+      redirect_to("/photo_details", { :notice => "Image was saved successfully" })
+
      else
       redirect_to("/", { :alert => the_question.errors.full_messages.to_sentence })
     end
   end
+end
 
   def update
     the_id = params.fetch("path_id")

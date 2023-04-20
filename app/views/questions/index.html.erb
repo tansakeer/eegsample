@@ -40,6 +40,9 @@
         <input type="file" id="image" name="query_image" class="form-control">
       </div>
 
+      <input type="hidden" id="some" name="query_question_id" input="<%= %>">
+
+
       <button>
         Upload
       </button>
@@ -59,20 +62,18 @@
         </th>
 
        <th>
-        Patient Age
+       Relevant Infomration
         </th>
-
+ 
+        <th>
+       Most Frequent Answers 
+        </th>      
         
-
         <th>
-          Question
-        </th>
-      
-        <th>
-        Medical History 
-        </th>
-         
-      </tr>
+       Latest User Comment
+        </th>  
+        
+        </tr>
 
 
       <% @questions.each do |a_question| %>
@@ -80,28 +81,44 @@
   
         <td>
         <% a_question.photos.each do|a_photo|%>
-      <img src="<%= a_photo.image %>" class="img-responsive" style="height: 500px; width: auto">
+      <img src="<%= a_photo.image %>" class="img-responsive" style="height: 300px; width: auto">
         <% end %>
         </td>
         
         <td>
-          <%= a_question.patient_age %>
+
+        <div>
+          Age:  <%= a_question.patient_age %>
+        </div>
+          </br>
+
+          <div>
+          User Query:  <%= a_question.question %>
+          </div>
+
+          </br>
+
+          <div>
+          Brief Medical History:  <%= a_question.medical_history %>
+          </div>
+
         </td>
 
         <td>
-          <%= a_question.question %>
+          
         </td>
+
+        <td>
+        <div>
+         <% a_question.photos.each do|an_photo| %>
+          <a href="/photos/<%= an_photo.id %>">
+          <% end %>
+          More Comments and Details 
+          </a>
+       </div>
+       </td>
 
         
-        <td>
-          <%= a_question.medical_history %>
-        </td>
-
-        <td>
-          <a href="/questions/<%= a_question.id %>">
-          Show details
-          </a>
-        </td>
 
       </tr>
       <% end %>
