@@ -79,8 +79,9 @@
       <tr>
   
         <td>
-      <img src="<%= a_question.photos.image %>" class="img-responsive">
-
+        <% a_question.photos.each do|a_photo|%>
+      <img src="<%= a_photo.image %>" class="img-responsive" style="height: 500px; width: auto">
+        <% end %>
         </td>
         
         <td>

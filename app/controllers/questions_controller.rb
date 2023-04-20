@@ -5,7 +5,7 @@ class QuestionsController < ApplicationController
     matching_questions = Question.all
 
     @list_of_questions = matching_questions.order({ :created_at => :desc })
-    @questions = @list_of_questions.paginate(page: params[:page], per_page: 2)
+    @questions = @list_of_questions.paginate(page: params[:page], per_page: 5)
 
     render({ :template => "questions/index.html.erb" })
   end
@@ -30,17 +30,16 @@ class QuestionsController < ApplicationController
     
     if the_question.valid?
       the_question.save
+  
 
-      the_image = Photo.new
-      the_image.question_id = the_question.question
-   
-      if the_image.valid?
-        the_image.save
+      the_photo = Photo.new
+      the_photo.question_id = the_question.id
+      the_photo.image= params.fetch("query_image")
+      the_photo.save
 
-      end
-
-      redirect_to("/", { :notice => "Question created successfully." })
-    else
+      #if the_image.valid?
+      redirect_to("/", { :notice => "Image was saved successfully" })
+     else
       redirect_to("/", { :alert => the_question.errors.full_messages.to_sentence })
     end
   end
