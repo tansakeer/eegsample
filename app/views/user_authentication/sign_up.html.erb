@@ -1,41 +1,33 @@
-<h1>Sign up</h1>
+<center>
+<br><br>
+<h3>Sign up</h3>
+<div style="width: 400px;">
+<br>
 
 <form action="/insert_user" method="post">
-
-  <div>
-    <label for="email_box">Email</label>
-    <input id="email_box" name="query_email" placeholder="Choose a email..." type="text">
-  </div>
-                 
-  <div>
-    <label for="role_box">Role</label>
-      
-    <input type="text" id="role_box" name="query_role">
-  </div>
-         
-  <div>
-    <label for="questions_count_box">Questions count</label>
-      
-    <input type="text" id="questions_count_box" name="query_questions_count">
-  </div>
-    
-  <div>
-    <label for="password_box">Password</label>
-    <input id="password_box" name="query_password" placeholder="Choose a password..." type="password">
-  </div>
-
-  <div>
-    <label for="password_confirmation_box">Password Confirmation</label>
-    <input id="password_confirmation_box" name="query_password_confirmation" placeholder="Confirm your password..." type="password">
-  </div>
-
-  <button>
-    Sign up
-  </button>
+<div class="form-floating mb-3">
+  <input name="query_email" type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+  <label for="floatingInput">Email address</label>
+</div>
+<div class="form-floating mb-3">
+  <input name="query_role" type="text" class="form-control" id="floatingInput" placeholder="Role">
+  <label for="floatingInput">Role</label>
+</div>
+<div class="form-floating mb-3">
+  <input name="query_password" type="password" class="form-control" id="floatingPassword" placeholder="Password">
+  <label for="floatingPassword">Password</label>
+</div>
+<div class="form-floating mb-3">
+  <input name="query_password_confirmation" type="password" class="form-control" id="floatingPassword" placeholder="Confirm password">
+  <label for="floatingPassword">Confirm password</label>
+</div>
+<div>
+  <input type="hidden" id="questions_count_box" name="query_questions_count">  
+</div>
+<br>
+<div class="d-grid gap-2 col-6 mx-auto">
+  <button class="btn btn-success">Sign up</button>
+</div>
 </form>
-
-<hr>
-
-<p>
-  Or, <a href="/user_sign_in">Sign in</a> instead.
-</p>
+</div>
+</center>

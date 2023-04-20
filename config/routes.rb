@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-
-
   # Routes for the Epilepsy type resource:
   # HOMEPAGE
 
@@ -104,11 +102,13 @@ Rails.application.routes.draw do
   # Routes for the Question resource:
 
   # CREATE
-  post("/insert_question", { :controller => "questions", :action => "create" })
+  get("/insert_question", { :controller => "questions", :action => "create_form" })
           
   # READ
   post("/zebra", { :controller => "questions", :action => "zebra_create" })
-  
+
+  get("/questions/:user_id/:path_id", { :controller => "questions", :action => "show_user_posts" })
+
   get("/questions/:path_id", { :controller => "questions", :action => "show" })
   
   # UPDATE

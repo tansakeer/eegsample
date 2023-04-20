@@ -7,7 +7,11 @@ class QuestionsController < ApplicationController
     @list_of_questions = matching_questions.order({ :created_at => :desc })
     @questions = @list_of_questions.paginate(page: params[:page], per_page: 10)
 
+    if @current_user == nil
+      redirect_to("/user_sign_in")
+    else
     render({ :template => "questions/index.html.erb" })
+    end
   end
 
   def show
@@ -42,7 +46,7 @@ class QuestionsController < ApplicationController
       end
 
       if count == 1
-      redirect_to("/photo_details", { :notice => "Image was saved successfully" })
+      redirect_to("/photo_details", { :notice => "Image was saved successfully." })
 
      else
       redirect_to("/", { :alert => the_question.errors.full_messages.to_sentence })
@@ -76,4 +80,22 @@ end
 
     redirect_to("/questions", { :notice => "Question deleted successfully."} )
   end
+
+
+
+  ########
+
+  def create_form
+    render({ :template => "questions/new_post.html.erb" })
+ end
+
+ 
+  def show_user_posts
+    matching_questions = Question.where({ :user_id => @current_user.id })
+
+    @the_question = matching_questions.at(0)
+
+    render({ :template => "questions/show.html.erb" })
+  end
+
 end

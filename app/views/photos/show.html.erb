@@ -1,111 +1,60 @@
-<div>
-  <div>
-    <h1>
-      List of Photo's for this Question
-    </h1>
+<style>
+.tdiv table th {
+  padding: 10px;
+  background-color: #e3edeb;
+}
+.tdiv table td {
+  background-color: #f5fafa;
+  padding: 20px;
+}
+.tdiv table tr {
+  border-bottom: 1px solid #bddbdb;
+}
+.tdiv table td.pid {
+  background-color: #e3edeb;
+}
+</style>
 
-    <div>
-      <div>
-        <a href="/">
-          Go back
-        </a>
-      </div>
-
-      
-    </div>
-</br>
-<div>
-  <div>
-  OTHER RELATED IMAGES
-
-    <table border="1">
-      
-      <tr>
-      
-       <th>
-        Photo ID No.
-        </th>
-
-        <th>
-        Images
-        </th>
-
-        <th>
-        Edit Photo
-        </th>
-
-      </tr>
-
-       <% @photo_related_to_question.each do|a_photo|%>
-        <tr>
-
-         <td>
-        <%= a_photo.id %>
-         </td>
-
-        <td>
-         <img src="<%= a_photo.image %>" class="img-responsive" style="height: 500px; width: auto">
-        </td>
-
-        <td>
-        <a href="/delete_photo/<%= a_photo.id %>">Delete photo</a>
-        
-        <form action="/modify_photo/<%= a_photo.id %>"  method="post" class="form-horizontal" enctype="multipart/form-data">
-      </br>
-        <label for="image_box">
-          Update Photo
-        </label>
-        <input type="file" id="image_box" name="query_image" value="<%= @the_photo.image %>" class="form-control">
-        <button>Update</button>
-      </td>
-
-      </tr>
-
-    <% end %>
-
-  </table>
-
-  </div>
+<h3>Related photos for this question</h3>
+<a href="/">Go back</a>
+<br>
+<br>
+<center>
+<div class="tdiv">
+<table>
+<tr>
+<th>Image</th>
+<th>Edit Photo</th>
+</tr>
+<% @photo_related_to_question.each do|a_photo|%>
+<tr>
+<td>
+<a href="<%= a_photo.image %>" target="_blank">
+<img src="<%= a_photo.image %>" class="img-responsive" style="width: 450px; height: auto">
+</a>
+<br>
+(Click photo to enlarge)
+</td>
+<td>
+<form action="/modify_photo/<%= a_photo.id %>" method="post" class="form-horizontal" enctype="multipart/form-data">
+<label for="image_box">Change this photo:</label>
+<br>
+<input type="file" id="image_box" name="query_image" value="<%= @the_photo.image %>" class="form-control">
+<br>
+<button class="btn btn-secondary">Update</button>
+</form>
+<ul>
+<br>
+<li>
+<a href="/photos/<%= a_photo.id %>">Add more photos for this question</a>
+</li>
+<li>
+<a href="/delete_photo/<%= a_photo.id %>">Delete photo</a>
+</li>
+</ul>
+</td>
+</tr>
+<% end %>
+</table>
 </div>
-
-<hr>
-
-
-<div>
-  <div>
-    <h2>
-      Edit photo
-    </h2>
-
-    <form action="/modify_photo/<%= @the_photo.id %>"  method="post" class="form-horizontal" enctype="multipart/form-data">
-      <div>
-        <label for="image_box">
-          Image
-        </label>
-        <input type="file" id="image_box" name="query_image" value="<%= @the_photo.image %>" class="form-control">
-      </div>
-
-      <div>
-        <label for="video_box">
-          Video
-        </label>
-
-        <input type="text" id="video_box" name="query_video" value="<%= @the_photo.video %>">
-      </div>
-
-      <div>
-        <label for="question_id_box">
-          Question
-        </label>
-
-        <input type="text" id="question_id_box" name="query_question_id" value="<%= @the_photo.question_id %>">
-      </div>
-
-      <button>
-        Update photo
-      </button>
-    </form>
-  </div>
-</div>
-
-<hr>
+</center>

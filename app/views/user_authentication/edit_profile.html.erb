@@ -1,36 +1,35 @@
-<div >
-  <h5>
-    Edit User Account
-  </h5>
+<center>
+<h3>Edit profile</h3>
+<div style="width: 400px;">
+<br>
 
-  <div>
-    <form action="/modify_user" method="post">
-      <div>
-        <label for="email_box">Email</label>
-        <input id="email_box" name="query_email" value="<%= @current_user.email %>">
-      </div>
-      <div>
-        <label for="role_box">Role</label>
-        <input id="role_box" name="query_role" value="<%= @current_user.role %>">
-      </div>
-      <div>
-        <label for="questions_count_box">Questions count</label>
-        <input id="questions_count_box" name="query_questions_count" value="<%= @current_user.questions_count %>">
-      </div>
+  <form action="/modify_user" method="post">
+  <div class="form-floating mb-3">
+    <input name="query_email" type="email" class="form-control" id="floatingInput" value="<%= @current_user.email %>">
+    <label for="floatingInput">Email address</label>
+  </div> 
 
-      <div>
-        <label for="password_box">Password</label>
-        <input id="password_box" name="query_password" placeholder="Choose a password..." type="password">
-      </div>
-    
-      <div>
-        <label for="password_confirmation_box">Password Confirmation</label>
-        <input id="password_confirmation_box" name="query_password_confirmation" placeholder="Confirm your password..." type="password">
-      </div>
-
-      <button>
-        Update account
-      </button>
-    </form>
+  <div class="form-floating mb-3">
+    <input name="query_role" type="text" class="form-control" id="floatingInput" value="<%= @current_user.role %>">
+    <label for="floatingInput">Role</label>
   </div>
+                                    
+  <div>
+    <input type="hidden" id="questions_count_box" name="query_questions_count" value="<%= @current_user.questions_count %>">  
+  </div>
+
+  <div class="form-floating mb-3">
+    <input name="query_password" type="password" class="form-control" id="floatingPassword" placeholder="Choose a new password">
+    <label for="floatingPassword">Password</label>
+  </div>
+
+  <div class="form-floating mb-3">
+    <input name="query_password_confirmation" type="password" class="form-control" id="floatingPassword" placeholder="Confirm your new password">
+    <label for="floatingPassword">Confirm password</label>
+  </div>
+  <br>
+  <div class="d-grid gap-2 col-6 mx-auto">
+    <button class="btn btn-success">Update profile</button>
+  </div>
+  </form>
 </div>

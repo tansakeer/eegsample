@@ -1,23 +1,22 @@
-<h1>Sign in</h1>
+<center>
+<br><br>
+<h3>Sign in</h3>
+<div style="width: 400px">
+<br>
 
 <form action="/user_verify_credentials" method="post">
-  <div>
-    <label for="email_box">Email</label>
-    <input id="email_box" name="query_email" placeholder="Enter your email..." type="text">
-  </div>
-
-  <div>
-    <label for="password_box">Password</label>
-    <input id="password_box" name="query_password" placeholder="Enter your password..." type="password">
-  </div>
-
-  <button>
-    Sign in
-  </button>
+<div class="form-floating mb-3">
+  <input name="query_email" type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+  <label for="floatingInput">Email address</label>
+</div>
+<div class="form-floating mb-3">
+  <input name="query_password" type="password" class="form-control" id="floatingPassword" placeholder="Password">
+  <label for="floatingPassword">Password</label>
+</div>
+<br>
+<div class="d-grid gap-2 col-6 mx-auto">
+  <button class="btn btn-success">Sign in</button>
+</div>
 </form>
-
-<hr>
-
-<p>
-  Or, <a href="/user_sign_up">Sign up</a> instead.
-</p>
+</div>
+</center>

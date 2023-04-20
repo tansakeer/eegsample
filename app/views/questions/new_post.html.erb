@@ -1,20 +1,6 @@
-<style>
-.tdiv table th {
-  padding: 10px;
-  background-color: #e3edeb;
-}
-.tdiv table td {
-  background-color: #f5fafa;
-  padding: 30px 15px 30px 15px;
-}
-.tdiv table tr {
-  border-bottom: 1px solid #bddbdb;
-}
-</style>
-
 <center>
-<h3>CrowdSource Board</h3>
-<br> 
+<h3>Post a new question</h3>
+<br>
 
 <div style="width: 450px; text-align: left;">
   <form action="/zebra" method="post" class="form-horizontal" enctype="multipart/form-data">
@@ -52,43 +38,5 @@
     <button align="right" class="btn btn-secondary">Post question</button>
     </center>
   </form>
-</div>
-
-<br>
-
-<hr>
-
-<div class="tdiv">
-  <table>
-  <tr>
-  <th>Image</th>
-  <th>Details</th>  
-  </tr>
-  <% @questions.each do |a_question| %>
-  <tr>
-  <td>
-  <% a_question.photos.each do|a_photo|%>
-  <img src="<%= a_photo.image %>" class="img-responsive" style="width: 400px; height: auto">
-  <% end %>
-  </td>
-  <td>
-  <ul>
-  <li>Age: <%= a_question.patient_age %></li>
-  <li>Question: <%= a_question.question %></li>
-  <li>Medical history: <%= a_question.medical_history %></li>
-  <li>Popular Answers:</li>      
-  <li>Latest Comment:</li>
-  <% a_question.photos.each do|an_photo| %>
-  <li><a href="/photos/<%= an_photo.id %>">More Comments and Details</a></li>
-  <% end %>
-  </ul>
-  </td>
-  </tr>
-  <% end %>
-</table>
-<br>
-  <div class="tnotice">
-  <%= will_paginate @questions %>
-  </div>
 </div>
 </center>
