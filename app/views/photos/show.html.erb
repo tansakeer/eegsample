@@ -1,11 +1,14 @@
 <style>
+.tdiv table {
+  width:700px;
+}
 .tdiv table th {
   padding: 10px;
   background-color: #e3edeb;
 }
 .tdiv table td {
   background-color: #f5fafa;
-  padding: 20px;
+  padding: 30px 15px 30px 15px;
 }
 .tdiv table tr {
   border-bottom: 1px solid #bddbdb;
@@ -15,11 +18,9 @@
 }
 </style>
 
-<h3>Related photos for this question</h3>
-<a href="/">Go back</a>
-<br>
-<br>
 <center>
+<h3>Related photos for this question</h3>
+<br>
 <div class="tdiv">
 <table>
 <tr>
@@ -30,7 +31,7 @@
 <tr>
 <td>
 <a href="<%= a_photo.image %>" target="_blank">
-<img src="<%= a_photo.image %>" class="img-responsive" style="width: 450px; height: auto">
+<img src="<%= a_photo.image %>" class="img-responsive" style="width: 400px; height: auto">
 </a>
 <br>
 (Click photo to enlarge)
